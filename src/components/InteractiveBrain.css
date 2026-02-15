@@ -1,0 +1,229 @@
+.interactive-brain {
+  margin-bottom: 2rem;
+}
+
+.brain-section-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: center;
+  margin: 0 0 1.5rem;
+  transition: background 0.3s ease, -webkit-background-clip 0s, background-clip 0s;
+}
+
+.interactive-brain:hover .brain-section-title {
+  background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.brain-container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  background: linear-gradient(145deg, var(--surface) 0%, #1a1e2a 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  min-height: 200px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: var(--shadow-card);
+  border-left: 4px solid var(--accent-purple);
+}
+
+.brain-container:hover {
+  border-color: rgba(167, 139, 250, 0.35);
+  box-shadow: var(--shadow-card), 0 0 0 1px rgba(167, 139, 250, 0.1);
+}
+
+.brain-image-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  flex-shrink: 0;
+}
+
+.brain-labeled-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+  vertical-align: middle;
+}
+
+.brain-regions-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.brain-regions-overlay .brain-region-hitbox {
+  position: absolute;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 4px;
+}
+
+.brain-regions-overlay .brain-region-hitbox:hover,
+.brain-regions-overlay .brain-region-hitbox.active {
+  background: rgba(167, 139, 250, 0.2);
+  box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.6);
+}
+
+/* Details panel (shows when hovering a region) */
+.brain-details-panel {
+  flex: 1;
+  min-width: 260px;
+  max-width: 380px;
+  background: linear-gradient(160deg, var(--surface-hover) 0%, #1a1f2e 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.brain-details-panel:has(.brain-details-title) {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent-soft), 0 4px 20px rgba(124, 156, 224, 0.08);
+}
+
+.brain-details-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-shadow: 0 0 20px rgba(124, 156, 224, 0.2);
+}
+
+.brain-details-panel--frontal .brain-details-title,
+.brain-details-panel--frontal .brain-details-label,
+.brain-details-panel--frontal .brain-details-desc,
+.brain-details-panel--frontal .brain-details-daily {
+  color: var(--accent-warm);
+}
+.brain-details-panel--frontal .brain-details-title {
+  text-shadow: 0 0 20px rgba(232, 168, 92, 0.3);
+}
+
+.brain-details-panel--parietal .brain-details-title,
+.brain-details-panel--parietal .brain-details-label,
+.brain-details-panel--parietal .brain-details-desc,
+.brain-details-panel--parietal .brain-details-daily {
+  color: var(--accent-amber);
+}
+.brain-details-panel--parietal .brain-details-title {
+  text-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+}
+
+.brain-details-panel--cerebellum .brain-details-title,
+.brain-details-panel--cerebellum .brain-details-label,
+.brain-details-panel--cerebellum .brain-details-desc,
+.brain-details-panel--cerebellum .brain-details-daily {
+  color: var(--success);
+}
+.brain-details-panel--cerebellum .brain-details-title {
+  text-shadow: 0 0 20px rgba(110, 231, 183, 0.3);
+}
+
+.brain-details-panel--occipital .brain-details-title,
+.brain-details-panel--occipital .brain-details-label,
+.brain-details-panel--occipital .brain-details-desc,
+.brain-details-panel--occipital .brain-details-daily {
+  color: var(--accent-purple);
+}
+.brain-details-panel--occipital .brain-details-title {
+  text-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
+}
+
+.brain-details-panel--amygdala .brain-details-title,
+.brain-details-panel--amygdala .brain-details-label,
+.brain-details-panel--amygdala .brain-details-desc,
+.brain-details-panel--amygdala .brain-details-daily {
+  color: var(--accent-pink);
+}
+.brain-details-panel--amygdala .brain-details-title {
+  text-shadow: 0 0 20px rgba(244, 114, 182, 0.3);
+}
+
+.brain-details-panel--brainstem .brain-details-title,
+.brain-details-panel--brainstem .brain-details-label,
+.brain-details-panel--brainstem .brain-details-desc,
+.brain-details-panel--brainstem .brain-details-daily {
+  color: #c4b896;
+}
+.brain-details-panel--brainstem .brain-details-title {
+  text-shadow: 0 0 20px rgba(196, 184, 150, 0.3);
+}
+
+.brain-details-panel--hippocampus .brain-details-title,
+.brain-details-panel--hippocampus .brain-details-label,
+.brain-details-panel--hippocampus .brain-details-desc,
+.brain-details-panel--hippocampus .brain-details-daily {
+  color: #6d28d9;
+}
+.brain-details-panel--hippocampus .brain-details-title {
+  text-shadow: 0 0 20px rgba(109, 40, 217, 0.3);
+}
+
+.brain-details-panel--thalamus .brain-details-title,
+.brain-details-panel--thalamus .brain-details-label,
+.brain-details-panel--thalamus .brain-details-desc,
+.brain-details-panel--thalamus .brain-details-daily {
+  color: var(--accent);
+}
+.brain-details-panel--thalamus .brain-details-title {
+  text-shadow: 0 0 20px rgba(124, 156, 224, 0.3);
+}
+
+.brain-details-panel--hypothalamus .brain-details-title,
+.brain-details-panel--hypothalamus .brain-details-label,
+.brain-details-panel--hypothalamus .brain-details-desc,
+.brain-details-panel--hypothalamus .brain-details-daily {
+  color: var(--accent-cyan);
+}
+.brain-details-panel--hypothalamus .brain-details-title {
+  text-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+}
+
+.brain-details-label {
+  margin: 1rem 0 0.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-teal);
+}
+
+.brain-details-label:first-of-type {
+  margin-top: 0;
+}
+
+.brain-details-desc {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.brain-details-daily {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.brain-details-placeholder {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  font-style: italic;
+}
